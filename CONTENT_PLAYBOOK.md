@@ -7,6 +7,8 @@ Build a clear, consistent, and highly discoverable public identity for Thomas Ha
 - Primary name: `Thomas Hayford`
 - Alternate name: `Thomas N. Hayford`
 - Canonical domain: `https://thomashayford.site`
+- Canonical identity page: `https://thomashayford.site/who-is-thomas-hayford/`
+- Machine-readable entity file: `https://thomashayford.site/entity/thomas-hayford.json`
 - Core company link: `https://www.iderwell.com`
 - Core social profiles:
   - `https://www.linkedin.com/in/thomas-n-hayford-804652111/`
@@ -15,6 +17,16 @@ Build a clear, consistent, and highly discoverable public identity for Thomas Ha
   - `https://github.com/tnhayford`
 
 Use these exact identifiers everywhere (website, LinkedIn, bios, guest posts, interviews, and social profiles).
+
+## Authority Sources
+Priority sources to keep aligned:
+- `thomashayford.site` identity page + entity JSON
+- LinkedIn profile
+- Iderwell official website profile mention: `https://iderwell.com/#team`
+- Crunchbase person profile: `https://www.crunchbase.com/person/thomas-hayford-7c97`
+- Crunchbase company profile: `https://www.crunchbase.com/organization/iderwell`
+
+Rule: every authority source must link back to the canonical identity page.
 
 ## Publishing Cadence
 Minimum weekly cadence:
@@ -58,10 +70,12 @@ For every post:
 3. Add URL to `/sitemap.xml`.
 4. Share on LinkedIn with canonical link.
 5. Request indexing in Google Search Console.
+6. If post is a major milestone, add it to `/who-is-thomas-hayford/` as supporting evidence.
 
 ## Disambiguation Rules
 To separate from others with similar names:
 - Keep an up-to-date `/who-is-thomas-hayford/` page
+- Keep `/entity/thomas-hayford.json` current
 - Keep CV page and PDF accessible
 - Keep consistent references to Iderwell and role
 - Keep the same profile photo and bio text across external profiles

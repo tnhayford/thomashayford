@@ -1,0 +1,86 @@
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://thomashayford.site/#person",
+      "name": "Thomas Nyarko Hayford",
+      "alternateName": ["Thomas Hayford", "Thomas N. Hayford"],
+      "url": "https://thomashayford.site/",
+      "image": "https://thomashayford.site/assets/thomas-hayford-profile.png",
+      "birthDate": "1994-11-02",
+      "birthPlace": { "@type": "Place", "name": "Obuasi, Ghana" },
+      "nationality": { "@type": "Country", "name": "Ghana" },
+      "homeLocation": { "@type": "Place", "name": "Ghana" },
+      "jobTitle": "Relationship Manager",
+      "worksFor": { "@id": "https://thomashayford.site/#hubtel" },
+      "founderOf": { "@id": "https://thomashayford.site/#iderwell" },
+      "affiliation": [
+        { "@id": "https://thomashayford.site/#hubtel" },
+        { "@id": "https://thomashayford.site/#iderwell" }
+      ],
+      "alumniOf": [
+        { "@type": "School", "name": "Holy Child Preparatory and JHS" },
+        { "@type": "School", "name": "St. John's School - Sekondi" },
+        {
+          "@type": "CollegeOrUniversity",
+          "name": "University of Cape Coast",
+          "url": "https://www.ucc.edu.gh"
+        }
+      ],
+      "knowsAbout": [
+        "Relationship management",
+        "Business growth",
+        "Merchant operations",
+        "Customer success",
+        "Operations support",
+        "Spatial data thinking"
+      ],
+      "sameAs": [
+        "https://www.linkedin.com/in/thomas-n-hayford-804652111/",
+        "https://www.facebook.com/tnhayford/",
+        "https://www.tiktok.com/@t_n986",
+        "https://github.com/tnhayford",
+              "https://www.crunchbase.com/person/thomas-hayford-7c97"
+      ],
+      "subjectOf": [
+        { "@type": "ProfilePage", "url": "https://www.linkedin.com/in/thomas-n-hayford-804652111/" },
+        { "@type": "WebPage", "url": "https://www.iderwell.com" },
+        { "@type": "WebPage", "url": "https://iderwell.com/#team" },
+        { "@type": "WebPage", "url": "https://thomashayford.site/who-is-thomas-hayford/" },
+        { "@type": "WebPage", "url": "https://thomashayford.site/cv.html" },
+        { "@type": "WebPage", "url": "https://thomashayford.site/story/" },
+        { "@type": "ProfilePage", "url": "https://www.crunchbase.com/person/thomas-hayford-7c97" },
+        { "@type": "ProfilePage", "url": "https://www.crunchbase.com/organization/iderwell" }
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://thomashayford.site/#hubtel",
+      "name": "Hubtel Limited"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://thomashayford.site/#iderwell",
+      "name": "Iderwell",
+      "url": "https://www.iderwell.com",
+      "sameAs": ["https://www.crunchbase.com/organization/iderwell"],
+      "founder": { "@id": "https://thomashayford.site/#person" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://thomashayford.site/#website",
+      "url": "https://thomashayford.site/",
+      "name": "Thomas Hayford",
+      "publisher": { "@id": "https://thomashayford.site/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://thomashayford.site/who-is-thomas-hayford/#profile",
+      "url": "https://thomashayford.site/who-is-thomas-hayford/",
+      "name": "Identity Details for Thomas Nyarko Hayford",
+      "mainEntity": { "@id": "https://thomashayford.site/#person" },
+      "isPartOf": { "@id": "https://thomashayford.site/#website" }
+    }
+  ]
+}

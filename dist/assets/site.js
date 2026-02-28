@@ -151,47 +151,6 @@
     revealTargets.forEach((el) => observer.observe(el));
   }
 
-  // Interactive life-journey timeline (if present).
-  const journey = document.querySelector("[data-journey]");
-  if (journey) {
-    const tabs = Array.from(journey.querySelectorAll('[role="tab"]'));
-    const panels = Array.from(journey.querySelectorAll('[role="tabpanel"]'));
-
-    const activateJourneyTab = (tab) => {
-      const targetId = tab.getAttribute("aria-controls");
-      tabs.forEach((item) => {
-        const isActive = item === tab;
-        item.setAttribute("aria-selected", isActive ? "true" : "false");
-        item.tabIndex = isActive ? 0 : -1;
-      });
-
-      panels.forEach((panel) => {
-        const isActive = panel.id === targetId;
-        panel.classList.toggle("active", isActive);
-        panel.hidden = !isActive;
-      });
-    };
-
-    tabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => activateJourneyTab(tab));
-      tab.addEventListener("keydown", (event) => {
-        if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
-          return;
-        }
-        event.preventDefault();
-        const delta = event.key === "ArrowRight" ? 1 : -1;
-        const next = (index + delta + tabs.length) % tabs.length;
-        tabs[next].focus();
-        activateJourneyTab(tabs[next]);
-      });
-    });
-
-    const defaultTab = tabs.find((item) => item.getAttribute("aria-selected") === "true") || tabs[0];
-    if (defaultTab) {
-      activateJourneyTab(defaultTab);
-    }
-  }
-
   // Animate bars and radial values if present
   const fillBars = () => {
     document.querySelectorAll(".skill-fill[data-fill], .progress-done[data-done]").forEach((el) => {
