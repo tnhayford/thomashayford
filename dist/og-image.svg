@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Thomas Hayford">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0b1220" />
+      <stop offset="55%" stop-color="#0f766e" />
+      <stop offset="100%" stop-color="#b45309" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)" />
+  <g fill="#f8fafc" font-family="Segoe UI, Arial, sans-serif">
+    <text x="70" y="260" font-size="88" font-weight="700">Thomas Hayford</text>
+    <text x="70" y="332" font-size="40" font-weight="500">Founder | Product Engineering Leader</text>
+    <text x="70" y="390" font-size="32" opacity="0.95">Official website: thomashayford.site</text>
+  </g>
+</svg>

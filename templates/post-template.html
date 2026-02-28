@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{TITLE}} | Thomas Hayford</title>
+    <meta name="description" content="{{SUMMARY}}" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <link rel="canonical" href="https://thomashayford.site/journal/{{CATEGORY}}/{{SLUG}}/" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="{{TITLE}}" />
+    <meta property="og:description" content="{{SUMMARY}}" />
+    <meta property="og:url" content="https://thomashayford.site/journal/{{CATEGORY}}/{{SLUG}}/" />
+    <meta property="og:image" content="https://thomashayford.site/assets/thomas-hayford-profile.png" />
+    <meta property="article:published_time" content="{{DATE}}" />
+    <meta property="article:modified_time" content="{{DATE}}" />
+    <meta property="article:section" content="{{CATEGORY_LABEL}}" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{{TITLE}}" />
+    <meta name="twitter:description" content="{{SUMMARY}}" />
+    <meta name="twitter:image" content="https://thomashayford.site/assets/thomas-hayford-profile.png" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="stylesheet" href="/assets/site.css?v=2026022804" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://thomashayford.site/#publisher",
+            "name": "Iderwell",
+            "url": "https://www.iderwell.com",
+            "logo": { "@type": "ImageObject", "url": "https://thomashayford.site/icon-512.svg" }
+          },
+          {
+            "@type": "BlogPosting",
+            "@id": "https://thomashayford.site/journal/{{CATEGORY}}/{{SLUG}}/#post",
+            "headline": "{{TITLE}}",
+            "description": "{{SUMMARY}}",
+            "datePublished": "{{DATE}}",
+            "dateModified": "{{DATE}}",
+            "articleSection": "{{CATEGORY_LABEL}}",
+            "inLanguage": "en",
+            "keywords": ["{{CATEGORY_LABEL}}", "Thomas Hayford", "journal"],
+            "image": ["https://thomashayford.site/assets/thomas-hayford-profile.png"],
+            "author": {
+              "@type": "Person",
+              "@id": "https://thomashayford.site/#person",
+              "name": "Thomas Hayford"
+            },
+            "publisher": { "@id": "https://thomashayford.site/#publisher" },
+            "mainEntityOfPage": "https://thomashayford.site/journal/{{CATEGORY}}/{{SLUG}}/"
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <header class="site-header"><div class="container header-inner"><a href="/" class="logo">Thomas Hayford</a><nav class="nav" aria-label="Main"><a href="/about/">About</a><a href="/story/">Story</a><a href="/now/">Now</a><a href="/projects/">Projects</a><a href="/journal/">Journal</a><a href="/cv.html">CV</a></nav></div></header>
+    <main class="container">
+      <div class="article-layout" style="margin-top: 2rem;">
+        <article class="article">
+          <div class="breadcrumb"><a href="/">Home</a> / <a href="/journal/">Journal</a> / <a href="/journal/{{CATEGORY}}/">{{CATEGORY_LABEL}}</a> / {{TITLE}}</div>
+          <h1 style="margin-top: 0.7rem;">{{TITLE}}</h1>
+          <div class="article-meta">
+            <span class="tag">{{CATEGORY_LABEL}}</span>
+            <span class="tag">Published {{DATE}}</span>
+            <span class="tag">By Thomas Hayford</span>
+          </div>
+
+          <figure class="post-visual">
+            <img class="post-image" src="/assets/thomas-hayford-profile.png" alt="Thomas Hayford image for article cover" />
+            <figcaption>Use a relevant monochrome portrait image with centered framing.</figcaption>
+          </figure>
+
+          <p>Intro paragraph with your core point and context.</p>
+          <p>Second paragraph with concrete detail, names, and outcomes.</p>
+          <p>Third paragraph with reflection and internal links to related pages.</p>
+          <p>Closing paragraph with a clear takeaway.</p>
+        </article>
+
+        <aside class="panel">
+          <h2>Post Metadata</h2>
+          <ul class="clean-list">
+            <li><b>Category</b>{{CATEGORY_LABEL}}</li>
+            <li><b>Date</b>{{DATE}}</li>
+            <li><b>Author</b>Thomas Hayford</li>
+          </ul>
+        </aside>
+      </div>
+      <footer class="footer"><p>Written by Thomas Hayford.</p></footer>
+    </main>
+    <script defer src="/assets/site.js?v=2026022804"></script>
+  </body>
+</html>

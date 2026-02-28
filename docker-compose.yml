@@ -1,0 +1,32 @@
+services:
+  thomashayford-web:
+    image: nginx:alpine
+    container_name: thomashayford-web
+    restart: unless-stopped
+
+    volumes:
+      - ./dist:/usr/share/nginx/html:ro
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+
+    networks:
+      - proxy
+
+    labels:
+      - "traefik.enable=true"
+
+      # HTTP router for ACME + plain HTTP
+      - "traefik.http.routers.thomashayford-http.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
+      - "traefik.http.routers.thomashayford-http.entrypoints=web"
+
+      # HTTPS router
+      - "traefik.http.routers.thomashayford.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
+      - "traefik.http.routers.thomashayford.entrypoints=websecure"
+      - "traefik.http.routers.thomashayford.tls=true"
+      - "traefik.http.routers.thomashayford.tls.certresolver=letsencrypt"
+
+      # Service
+      - "traefik.http.services.thomashayford.loadbalancer.server.port=80"
+
+networks:
+  proxy:
+    external: true

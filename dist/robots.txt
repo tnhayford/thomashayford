@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Host: thomashayford.site
+Sitemap: https://thomashayford.site/sitemap.xml
