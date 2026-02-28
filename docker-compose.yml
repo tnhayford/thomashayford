@@ -17,6 +17,9 @@ services:
       # HTTP router for ACME + plain HTTP
       - "traefik.http.routers.thomashayford-http.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
       - "traefik.http.routers.thomashayford-http.entrypoints=web"
+      - "traefik.http.routers.thomashayford-http.middlewares=thomashayford-https-redirect"
+      - "traefik.http.middlewares.thomashayford-https-redirect.redirectscheme.scheme=https"
+      - "traefik.http.middlewares.thomashayford-https-redirect.redirectscheme.permanent=true"
 
       # HTTPS router
       - "traefik.http.routers.thomashayford.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
