@@ -28,6 +28,9 @@
 ## External Signals
 - [ ] Keep a dedicated Thomas Hayford profile section/page on `iderwell.com` and link to `thomashayford.site/who-is-thomas-hayford/`
   - Team link: `https://iderwell.com/#team`
+- [ ] Keep Hubtel team profile reference active:
+  - Team profile link: `https://explore.hubtel.com/team/#ThomasHayford`
+  - If title differs from other sources, keep timeline text explicit (Relationship Executive -> Relationship Manager in March 2025)
 - [ ] Keep Crunchbase profiles active and connected:
   - Thomas Hayford person profile URL: `https://www.crunchbase.com/person/thomas-hayford-7c97`
   - Iderwell company profile URL: `https://www.crunchbase.com/organization/iderwell`

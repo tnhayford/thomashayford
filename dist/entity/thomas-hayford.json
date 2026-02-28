@@ -12,7 +12,7 @@
       "birthPlace": { "@type": "Place", "name": "Obuasi, Ghana" },
       "nationality": { "@type": "Country", "name": "Ghana" },
       "homeLocation": { "@type": "Place", "name": "Ghana" },
-      "jobTitle": "Relationship Manager",
+      "jobTitle": "Relationship Management Professional",
       "worksFor": { "@id": "https://thomashayford.site/#hubtel" },
       "founderOf": { "@id": "https://thomashayford.site/#iderwell" },
       "affiliation": [
@@ -47,6 +47,7 @@
         { "@type": "ProfilePage", "url": "https://www.linkedin.com/in/thomas-n-hayford-804652111/" },
         { "@type": "WebPage", "url": "https://www.iderwell.com" },
         { "@type": "WebPage", "url": "https://iderwell.com/#team" },
+        { "@type": "ProfilePage", "url": "https://explore.hubtel.com/team/#ThomasHayford" },
         { "@type": "WebPage", "url": "https://thomashayford.site/who-is-thomas-hayford/" },
         { "@type": "WebPage", "url": "https://thomashayford.site/cv.html" },
         { "@type": "WebPage", "url": "https://thomashayford.site/story/" },

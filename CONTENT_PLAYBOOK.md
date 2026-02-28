@@ -23,8 +23,12 @@ Priority sources to keep aligned:
 - `thomashayford.site` identity page + entity JSON
 - LinkedIn profile
 - Iderwell official website profile mention: `https://iderwell.com/#team`
+- Hubtel team profile mention: `https://explore.hubtel.com/team/#ThomasHayford`
 - Crunchbase person profile: `https://www.crunchbase.com/person/thomas-hayford-7c97`
 - Crunchbase company profile: `https://www.crunchbase.com/organization/iderwell`
+
+Role consistency note:
+- Hubtel team listing currently shows `Relationship Executive`; this site reflects role progression to Relationship Manager in March 2025.
 
 Rule: every authority source must link back to the canonical identity page.
 
