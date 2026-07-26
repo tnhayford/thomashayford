@@ -9,7 +9,6 @@ Build a clear, consistent, and highly discoverable public identity for Thomas Ha
 - Canonical domain: `https://thomashayford.site`
 - Canonical identity page: `https://thomashayford.site/who-is-thomas-hayford/`
 - Machine-readable entity file: `https://thomashayford.site/entity/thomas-hayford.json`
-- Core company link: `https://www.iderwell.com`
 - Core social profiles:
   - `https://www.linkedin.com/in/thomas-n-hayford-804652111/`
   - `https://www.facebook.com/tnhayford/`
@@ -22,10 +21,8 @@ Use these exact identifiers everywhere (website, LinkedIn, bios, guest posts, in
 Priority sources to keep aligned:
 - `thomashayford.site` identity page + entity JSON
 - LinkedIn profile
-- Iderwell official website profile mention: `https://iderwell.com/#team`
 - Hubtel team profile mention: `https://explore.hubtel.com/team/#ThomasHayford`
 - Crunchbase person profile: `https://www.crunchbase.com/person/thomas-hayford-7c97`
-- Crunchbase company profile: `https://www.crunchbase.com/organization/iderwell`
 
 Role consistency note:
 - Hubtel team listing currently shows `Relationship Executive`; this site reflects role progression to Relationship Manager in March 2025.
@@ -81,12 +78,12 @@ To separate from others with similar names:
 - Keep an up-to-date `/who-is-thomas-hayford/` page
 - Keep `/entity/thomas-hayford.json` current
 - Keep CV page and PDF accessible
-- Keep consistent references to Iderwell and role
+- Keep current professional-role references accurate
 - Keep the same profile photo and bio text across external profiles
 
 ## 90-Day Output Plan
 - Month 1: 12 posts, complete profile and identity pages
 - Month 2: 12 posts, add image-rich travel and personal stories
-- Month 3: 12 posts, add deeper technical and founder essays
+- Month 3: 12 posts, add deeper technical and service-operations essays
 
 Total target: 36 posts in 90 days.

@@ -7,6 +7,8 @@ services:
     volumes:
       - ./dist:/usr/share/nginx/html:ro
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./nginx/gsc-redirects.conf:/etc/nginx/gsc-redirects.conf:ro
+      - ./logs:/var/log/nginx
 
     networks:
       - proxy
@@ -14,18 +16,33 @@ services:
     labels:
       - "traefik.enable=true"
 
-      # HTTP router for ACME + plain HTTP
-      - "traefik.http.routers.thomashayford-http.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
+      # HTTP router for apex
+      - "traefik.http.routers.thomashayford-http.rule=Host(`thomashayford.site`)"
       - "traefik.http.routers.thomashayford-http.entrypoints=web"
       - "traefik.http.routers.thomashayford-http.middlewares=thomashayford-https-redirect"
       - "traefik.http.middlewares.thomashayford-https-redirect.redirectscheme.scheme=https"
       - "traefik.http.middlewares.thomashayford-https-redirect.redirectscheme.permanent=true"
 
-      # HTTPS router
-      - "traefik.http.routers.thomashayford.rule=Host(`thomashayford.site`) || Host(`www.thomashayford.site`)"
+      # HTTPS router for apex
+      - "traefik.http.routers.thomashayford.rule=Host(`thomashayford.site`)"
       - "traefik.http.routers.thomashayford.entrypoints=websecure"
       - "traefik.http.routers.thomashayford.tls=true"
       - "traefik.http.routers.thomashayford.tls.certresolver=letsencrypt"
+
+      # Redirect www directly to apex
+      - "traefik.http.routers.thomashayford-www-http.rule=Host(`www.thomashayford.site`)"
+      - "traefik.http.routers.thomashayford-www-http.entrypoints=web"
+      - "traefik.http.routers.thomashayford-www-http.middlewares=thomashayford-www-redirect"
+
+      - "traefik.http.routers.thomashayford-www.rule=Host(`www.thomashayford.site`)"
+      - "traefik.http.routers.thomashayford-www.entrypoints=websecure"
+      - "traefik.http.routers.thomashayford-www.tls=true"
+      - "traefik.http.routers.thomashayford-www.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.thomashayford-www.middlewares=thomashayford-www-redirect"
+
+      - "traefik.http.middlewares.thomashayford-www-redirect.redirectregex.regex=^https?://www\\.thomashayford\\.site/(.*)"
+      - "traefik.http.middlewares.thomashayford-www-redirect.redirectregex.replacement=https://thomashayford.site/$$1"
+      - "traefik.http.middlewares.thomashayford-www-redirect.redirectregex.permanent=true"
 
       # Service
       - "traefik.http.services.thomashayford.loadbalancer.server.port=80"

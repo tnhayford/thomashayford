@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
-
-Host: thomashayford.site
+Disallow: /files/
+Disallow: /story/
+Disallow: /cv.html
 Sitemap: https://thomashayford.site/sitemap.xml

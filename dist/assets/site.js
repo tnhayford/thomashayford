@@ -4,6 +4,13 @@
     return;
   }
 
+  const ANALYTICS_CONFIG = {
+    ga4MeasurementId: "",
+    clarityProjectId: "",
+  };
+  const CONSENT_KEY = "th_analytics_consent";
+  let analyticsInitialized = false;
+
   body.classList.add("js-ready");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const header = document.querySelector(".site-header");
@@ -44,6 +51,154 @@
       navToggle.setAttribute("aria-expanded", "false");
       navToggle.textContent = "Menu";
     }
+  };
+
+  const hasValue = (value) => typeof value === "string" && value.trim().length > 0;
+  const analyticsConfigured =
+    hasValue(ANALYTICS_CONFIG.ga4MeasurementId) || hasValue(ANALYTICS_CONFIG.clarityProjectId);
+
+  const getConsent = () => {
+    try {
+      const value = window.localStorage.getItem(CONSENT_KEY);
+      return value === "accepted" || value === "declined" ? value : null;
+    } catch {
+      return null;
+    }
+  };
+
+  const setConsent = (value) => {
+    try {
+      window.localStorage.setItem(CONSENT_KEY, value);
+    } catch {
+      // Ignore storage errors in strict/private browser modes.
+    }
+  };
+
+  const clearConsent = () => {
+    try {
+      window.localStorage.removeItem(CONSENT_KEY);
+    } catch {
+      // Ignore storage errors in strict/private browser modes.
+    }
+  };
+
+  const injectExternalScript = (id, src, async = true) => {
+    if (document.getElementById(id)) {
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = id;
+    script.src = src;
+    script.async = async;
+    document.head.appendChild(script);
+  };
+
+  const injectInlineScript = (id, content) => {
+    if (document.getElementById(id)) {
+      return;
+    }
+    const script = document.createElement("script");
+    script.id = id;
+    script.text = content;
+    document.head.appendChild(script);
+  };
+
+  const setupGA4 = (measurementId) => {
+    injectExternalScript("th-ga4-lib", `https://www.googletagmanager.com/gtag/js?id=${measurementId}`);
+    if (!window.dataLayer) {
+      window.dataLayer = [];
+    }
+    window.gtag = (...args) => {
+      if (!window.dataLayer) {
+        window.dataLayer = [];
+      }
+      window.dataLayer.push(args);
+    };
+    window.gtag("js", new Date());
+    window.gtag("config", measurementId, {
+      anonymize_ip: true,
+      allow_google_signals: true,
+    });
+  };
+
+  const setupClarity = (projectId) => {
+    injectInlineScript(
+      "th-clarity-inline",
+      `(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);})(window,document,'clarity','script','${projectId}');`
+    );
+  };
+
+  const initializeAnalytics = () => {
+    if (analyticsInitialized || !analyticsConfigured) {
+      return;
+    }
+    if (hasValue(ANALYTICS_CONFIG.ga4MeasurementId)) {
+      setupGA4(ANALYTICS_CONFIG.ga4MeasurementId);
+    }
+    if (hasValue(ANALYTICS_CONFIG.clarityProjectId)) {
+      setupClarity(ANALYTICS_CONFIG.clarityProjectId);
+    }
+    analyticsInitialized = true;
+  };
+
+  const closeConsentBanner = () => {
+    const banner = document.querySelector(".consent-banner");
+    if (banner) {
+      banner.remove();
+    }
+  };
+
+  const showConsentBanner = () => {
+    if (document.querySelector(".consent-banner")) {
+      return;
+    }
+
+    const banner = document.createElement("section");
+    banner.className = "consent-banner";
+    banner.setAttribute("aria-label", "Privacy preferences");
+    banner.innerHTML = `
+      <p class="consent-title">Privacy preferences</p>
+      <p class="consent-copy">This site can use analytics cookies to improve content and visitor experience.</p>
+      <div class="consent-actions">
+        <button type="button" class="consent-btn consent-btn-accept">Accept analytics</button>
+        <button type="button" class="consent-btn consent-btn-decline">Decline</button>
+      </div>
+    `;
+
+    const acceptButton = banner.querySelector(".consent-btn-accept");
+    const declineButton = banner.querySelector(".consent-btn-decline");
+
+    acceptButton?.addEventListener("click", () => {
+      setConsent("accepted");
+      initializeAnalytics();
+      closeConsentBanner();
+    });
+
+    declineButton?.addEventListener("click", () => {
+      setConsent("declined");
+      closeConsentBanner();
+    });
+
+    body.appendChild(banner);
+  };
+
+  const mountPrivacyButton = () => {
+    if (document.querySelector(".privacy-settings-btn")) {
+      return;
+    }
+
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "privacy-settings-btn";
+    button.textContent = "Privacy";
+    button.setAttribute("aria-label", "Open privacy settings");
+
+    button.addEventListener("click", () => {
+      clearConsent();
+      showConsentBanner();
+    });
+
+    body.appendChild(button);
   };
 
   if (nav && headerInner && header) {
@@ -170,4 +325,15 @@
   };
 
   fillBars();
+
+  // Consent-gated analytics bootstrapping.
+  const consentState = getConsent();
+  if (analyticsConfigured) {
+    if (consentState === "accepted") {
+      initializeAnalytics();
+    } else if (consentState === null) {
+      showConsentBanner();
+    }
+    mountPrivacyButton();
+  }
 })();
